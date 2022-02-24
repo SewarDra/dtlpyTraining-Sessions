@@ -26,7 +26,6 @@ if __name__ == '__main__':
     # dataset.items.upload(local_path=r'path-to-image-item')
     # dataset.items.upload(local_path=r'path-to-image-item')
 
-
     # # get item
     #item = dataset.items.get(item_id='item-id')
     # # modify metadata for that item

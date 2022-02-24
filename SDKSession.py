@@ -14,21 +14,21 @@ if __name__ == '__main__':
     #create a project
     #project = dl.projects.create(project_name='my-new-project')
     #get project
-    project = dl.projects.get(project_id='e4a5e5b3-a22a-4b59-9b76-30417a0859d9')
+    project = dl.projects.get(project_id='your-project-name')
     #create dataset
-    # dataset = project.datasets.create(dataset_name='TrainingDemo')
+    # dataset = project.datasets.create(dataset_name='your-dataset-name')
     # # get dataset
-    #dataset = project.datasets.get(dataset_name='TrainingDemo')
+    #dataset = project.datasets.get(dataset_name='your-dataset-name')
     # #upload items
 
-    # dataset.items.upload(local_path=r'C:\Users\Sewars\Desktop\1.jpg')
-    # dataset.items.upload(local_path=r'C:\Users\Sewars\Desktop\2.jpg')
-    # dataset.items.upload(local_path=r'C:\Users\Sewars\Desktop\3.jpg')
-    # dataset.items.upload(local_path=r'C:\Users\Sewars\Desktop\4.jpg')
+    # dataset.items.upload(local_path=r'path-to-image-item')
+    # dataset.items.upload(local_path=r'path-to-image-item')
+    # dataset.items.upload(local_path=r'path-to-image-item')
+    # dataset.items.upload(local_path=r'path-to-image-item')
 
 
     # # get item
-    #item = dataset.items.get(item_id='620e2d84c2e1aa48468bdb56')
+    #item = dataset.items.get(item_id='item-id')
     # # modify metadata for that item
     # item.metadata['user'] = dict()
     # # # # getting the real date and time-we're going to add a filed in the item's user metadata called Date and time

@@ -1,0 +1,11 @@
+{
+  "inputs": [
+    {
+      "name": "item",
+      "value": {
+        "item_id": "Your item ID"
+      }
+    }
+  ],
+  "config": {}
+}

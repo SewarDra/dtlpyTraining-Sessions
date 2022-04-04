@@ -1,0 +1,37 @@
+{
+  "inputs": [
+    {
+      "name": "dataset",
+      "value": {
+        "dataset_id": "<Dataset ID>"
+      }
+    },
+    {
+      "name": "height",
+      "value": null
+    },
+    {
+      "name": "width",
+      "value": null
+    },
+    {
+      "name": "query",
+      "value": {
+        "filter": {
+          "$and": [
+            {
+              "id": "Your item ID for case that you want to filter spacific item"
+            },
+            {
+              "hidden": false
+            },
+            {
+              "type": "file"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "config": {}
+}

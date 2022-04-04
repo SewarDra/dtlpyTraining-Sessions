@@ -1,0 +1,36 @@
+{
+  "inputs": [
+    {
+      "name": "dataset",
+      "value": {
+        "dataset_id": "Your dataset ID"
+      }
+    },
+    {
+      "name": "query",
+      "value": {
+        "filter": {
+          "$and": [
+            {
+              "$or": [
+                {
+                  "annotated": true
+                }
+              ]
+            },
+            {
+              "id": "Your item ID"
+            },
+            {
+              "hidden": false
+            },
+            {
+              "type": "file"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "config": {}
+}

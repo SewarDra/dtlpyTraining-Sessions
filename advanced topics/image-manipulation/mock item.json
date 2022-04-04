@@ -1,0 +1,19 @@
+{
+  "inputs": [
+    {
+      "name": "item",
+      "value": {
+        "item_id": "<Item ID>"
+      }
+    },
+    {
+      "name": "height",
+      "value": 700
+    },
+    {
+      "name": "width",
+      "value": 700
+    }
+  ],
+  "config": {}
+}

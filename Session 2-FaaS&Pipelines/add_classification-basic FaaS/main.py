@@ -2,9 +2,7 @@ import io
 
 import dtlpy as dl
 import logging
-from PIL import Image
-import json
-import os
+
 
 
 logger = logging.getLogger(name=__name__)

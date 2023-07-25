@@ -1,12 +1,11 @@
 import io
+import pathlib
 
 import dtlpy as dl
 import logging
 from PIL import Image
 import json
 import os
-
-
 logger = logging.getLogger(name=__name__)
 
 
@@ -55,29 +54,28 @@ class ServiceRunner(dl.BaseServiceRunner):
                     if annotation.type == dl.AnnotationType.BOX:
                         # only crop box annotations that were added to the original item.
                         if annotation.metadata.get('system', dict()).get('crop', dict()).get('from_cropped',
-                                                                                                       None):
+                                                                                             None):
                             continue
                         cropped_image = image.crop(
                             (annotation.left, annotation.top, annotation.right, annotation.bottom))
-                        buffer = io.BytesIO()
+
                         # cropped image name
-                        file_name = "{}_{}".format(annotation.id, item.name)
-                        buffer.name = file_name
-                        cropped_image.save(buffer)
+                        file_name = "cropped_{}_{}".format(annotation.id,item.name)
 
-
+                        upload_path = os.path.join(str(pathlib.Path('.').resolve()), file_name)
+                        cropped_image.save(file_name)
                         # upload the cropped image
-                        uploaded = item.dataset.items.upload(local_path=buffer,
+                        uploaded = item.dataset.items.upload(local_path=upload_path,
                                                              remote_path='/crop',
                                                              item_metadata={
-                                                                 'system': {
+                                                                 'user': {
                                                                      'crop': {
                                                                          'original_item_id': item.id,
                                                                          'original_annotation_id': annotation.id,
-                                                                         'original_position_left': annotation.left,
-                                                                         'original_position_top': annotation.top,
-                                                                         'original_position_right': annotation.right,
-                                                                         'original_position_bottom': annotation.bottom,
+                                                                         'original_position_left': int(annotation.left),
+                                                                         'original_position_top': int(annotation.top),
+                                                                         'original_position_right': int(annotation.right),
+                                                                         'original_position_bottom': int(annotation.bottom),
                                                                          'original_label': annotation.label
                                                                      }
                                                                  }
@@ -91,4 +89,14 @@ class ServiceRunner(dl.BaseServiceRunner):
                 pbar.update()
 
 
+if __name__ == "__main__":
+    """
+    Run this main to locally debug your package
+    """
+    # im = dl.items.get(item_id='6495c8a2e8675c298ab8a37d') # mp3 duo track
+    # im = dl.items.get(item_id='6463520a7824134c0aca23e0') # mp3 mono track
 
+    im = dl.items.get(item_id='64c0091f80023874ed9f04fd')  # wav on sigma
+
+    srr = ServiceRunner()
+    srr._crop_single_image_boxes(item=im)

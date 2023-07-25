@@ -13,6 +13,7 @@ def deploy_package(project, new_package_deployment):
     if new_package_deployment:
         package = project.packages.push(package_name=package_name,
                                         modules=get_modules(),
+
                                         src_path=src_path)
         print('New Package has been deployed')
     else:
